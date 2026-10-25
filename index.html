@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+<title>蜕变 · 高质量男性养成游戏</title>
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0d0f14">
+
+<!-- iOS 主屏幕应用 -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="蜕变">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+
+<meta name="description" content="把《优质男性手册》变成每天15分钟的行为系统——90天，从愣头青到高质量男性。">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+  <header id="hud"></header>
+
+  <nav id="tabs">
+    <button class="tab active" data-action="tab" data-id="status">👤 角色</button>
+    <button class="tab" data-action="tab" data-id="daily">📅 今日修行</button>
+    <button class="tab" data-action="tab" data-id="challenge">⚔️ 挑战</button>
+    <button class="tab" data-action="tab" data-id="trainer">🎯 训练场</button>
+    <button class="tab" data-action="tab" data-id="skills">🌳 技能树</button>
+    <button class="tab" data-action="tab" data-id="library">📚 图书馆</button>
+    <button class="tab" data-action="tab" data-id="ach">🏆 成就</button>
+    <button class="tab" data-action="tab" data-id="red">🚫 红线</button>
+  </nav>
+
+  <main id="content">
+    <section id="sec-status" class="page active"></section>
+    <section id="sec-daily" class="page"></section>
+    <section id="sec-challenge" class="page"></section>
+    <section id="sec-trainer" class="page"></section>
+    <section id="sec-skills" class="page"></section>
+    <section id="sec-library" class="page"></section>
+    <section id="sec-ach" class="page"></section>
+    <section id="sec-red" class="page"></section>
+  </main>
+
+  <footer id="footer">《蜕变 · 高质量男性养成游戏》 V1.0 —— 理论来源《优质男性手册》 · 游戏里的每一点成长，都必须先在现实里发生。</footer>
+</div>
+
+<div id="modal-root"></div>
+<div id="toast-root"></div>
+
+<script src="js/data.js"></script>
+<script src="js/game.js"></script>
+<script>
+/* 注册 Service Worker（file:// 协议下自动跳过） */
+if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
+</script>
+</body>
+</html>
